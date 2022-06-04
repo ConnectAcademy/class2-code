@@ -1,0 +1,46 @@
+body {
+  background-color: #f2f2f2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.header {
+  color: #111;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  text-align: center;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.children-card {
+  display: flex;
+  justify-content: space-around;
+}
+
+.input {
+  border-width: 1px;
+  border-style: none;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.input:placeholder {
+  color: grey;
+}
+
+.button {
+  border-color: black;
+  border-width: 1px;
+  border-style: none;
+}
