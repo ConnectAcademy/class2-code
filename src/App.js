@@ -35,9 +35,18 @@
  */
 
 import React from "react";
+import "./App.css";
 
 const App = () => {
-  return <h1>Hello World!</h1>;
+  return (
+    <div className="container">
+      <h1 className="text">SPEED TYPING GAME</h1>
+      <textarea className="textarea" />
+      <h4 className="text">10 s</h4>
+      <button className="button">START!</button>
+      <h1 className="text">Word count: 0</h1>
+    </div>
+  );
 };
 
 export default App;
