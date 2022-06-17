@@ -34,17 +34,59 @@
  * zapocne so pishuvanje. Pomosh: koristete useRef() i metoda focus()
  */
 
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 
 const App = () => {
+  const [userInput, setUserInput] = useState("");
+  const [timeRemaining, setTimeRemainig] = useState(10);
+  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [wordsCounted, setWordsCounted] = useState(0);
+  const textareaRef = useRef();
+
+  useEffect(() => {
+    if (timeRemaining > 0 && isGameStarted) {
+      setTimeout(() => setTimeRemainig((prev) => prev - 1), 1000);
+    } else {
+      endGame();
+    }
+  }, [timeRemaining, isGameStarted]);
+
+  function countWords(str) {
+    const words = str.split(" ");
+    return words.filter((words) => words !== "").length;
+  }
+
+  function startGame() {
+    textareaRef.current.disabled = false;
+    textareaRef.current.focus();
+    setIsGameStarted(true);
+    setUserInput("");
+    setTimeRemainig(10);
+  }
+
+  function endGame() {
+    textareaRef.current.disabled = true;
+    setIsGameStarted(false);
+    setWordsCounted(countWords(userInput));
+  }
+
+  console.log(userInput);
+
   return (
     <div className="container">
       <h1 className="text">SPEED TYPING GAME</h1>
-      <textarea className="textarea" />
-      <h4 className="text">10 s</h4>
-      <button className="button">START!</button>
-      <h1 className="text">Word count: 0</h1>
+      <textarea
+        className="textarea"
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
+        ref={textareaRef}
+      />
+      <h4 className="text">{timeRemaining} s</h4>
+      <button className="button" onClick={() => startGame()}>
+        START!
+      </button>
+      <h1 className="text">Word count: {wordsCounted}</h1>
     </div>
   );
 };
