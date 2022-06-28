@@ -4,15 +4,17 @@ export const Context = createContext({});
 
 const ContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const authUser = () => {
+  const [user, setUser] = useState(null);
+  const authUser = (user) => {
     setIsLoggedIn((prev) => !prev);
+    setUser(user);
   };
   return (
     <Context.Provider
       value={{
         isLoggedIn,
         authUser,
+        user,
       }}
     >
       {children}

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../Context";
+
+import WithAuth from "../HOC/withAuth";
 
 const Home = () => {
-  return <div>Home</div>;
+  const { user } = useContext(Context);
+  return <div>Hello {user}</div>;
 };
 
-export default Home;
+export default WithAuth(Home);
