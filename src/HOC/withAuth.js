@@ -3,17 +3,19 @@ import { Context } from "../Context";
 import { useNavigate } from "react-router-dom";
 
 const WithAuth = (ChildComponent) => {
-  const { isLoggedIn } = useContext(Context);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/login");
-    }
-  }, [isLoggedIn]);
   const ComposedComponent = (props) => {
+    const { isLoggedIn } = useContext(Context);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (!isLoggedIn) {
+        navigate("/login");
+      }
+    }, [isLoggedIn]);
+
     return <ChildComponent {...props} />;
   };
-  return <ComposedComponent />;
+  return ComposedComponent;
 };
 
 export default WithAuth;

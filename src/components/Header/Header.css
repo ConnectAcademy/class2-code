@@ -1,0 +1,19 @@
+.header {
+  height: 20px;
+  background-color: grey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  text-decoration: none;
+  color: black;
+  padding-right: 5px;
+  padding-left: 10px;
+}
+
+.right-link {
+  padding-right: 10px;
+}
